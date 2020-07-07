@@ -20,7 +20,7 @@ FileInstall, C:\Users\Kipras\Documents\AHK Scripts\Sudu Tasks\Images\sudu.png, d
 
 Hotkey !^a, AddTasks
 Hotkey !^r, StartTasks
-
+; test
 ST_Insert(insert,input,pos=1)
 {
     Length := StrLen(input)
