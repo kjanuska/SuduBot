@@ -11,26 +11,6 @@ SetKeyDelay -1
 SetMouseDelay -1
 SetBatchLines -1
 
-FileCreateDir, data
-FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\start.png, data\start.png
-FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\tasks.png, data\tasks.png
-FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\continue.png, data\continue.png
-FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\email_box.png, data\email_box.png
-FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\sudu.png, data\sudu.png
-
-Hotkey !^a, AddTasks
-Hotkey !^r, StartTasks
-
-ST_Insert(insert,input,pos=1)
-{
-    Length := StrLen(input)
-    ((pos > 0) ? (pos2 := pos - 1) : (((pos = 0) ? (pos2 := StrLen(input),Length := 0) : (pos2 := pos))))
-    output := SubStr(input, 1, pos2) . insert . SubStr(input, pos, Length)
-    if (StrLen(output) > StrLen(input) + StrLen(insert))
-        ((Abs(pos) <= StrLen(input)/2) ? (output := SubStr(output, 1, pos2 - 1) . SubStr(output, pos + 1, StrLen(input))) : (output := SubStr(output, 1, pos2 - StrLen(insert) - 2) . SubStr(output, pos - StrLen(insert), StrLen(input))))
-    return, output
-}
-
 ; ==============================================================================
 /*
 
@@ -50,6 +30,26 @@ Y88b  d88P Y88b 888 Y88b 888 Y88b 888       Y88b  d88P Y88b.    888     888 888 
 
 */
 ; ==============================================================================
+
+FileCreateDir, data
+FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\start.png, data\start.png
+FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\tasks.png, data\tasks.png
+FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\continue.png, data\continue.png
+FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\email_box.png, data\email_box.png
+FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\sudu.png, data\sudu.png
+
+Hotkey !^a, AddTasks
+Hotkey !^r, StartTasks
+
+ST_Insert(insert,input,pos=1)
+{
+    Length := StrLen(input)
+    ((pos > 0) ? (pos2 := pos - 1) : (((pos = 0) ? (pos2 := StrLen(input),Length := 0) : (pos2 := pos))))
+    output := SubStr(input, 1, pos2) . insert . SubStr(input, pos, Length)
+    if (StrLen(output) > StrLen(input) + StrLen(insert))
+        ((Abs(pos) <= StrLen(input)/2) ? (output := SubStr(output, 1, pos2 - 1) . SubStr(output, pos + 1, StrLen(input))) : (output := SubStr(output, 1, pos2 - StrLen(insert) - 2) . SubStr(output, pos - StrLen(insert), StrLen(input))))
+    return, output
+}
 
 Gui, Add, Button, x32 y29 w120 h70 gRunEverything, Add tasks and start them
 Gui, Add, Button, x32 y109 w120 h70 gDeleteTasks, Delete Tasks
