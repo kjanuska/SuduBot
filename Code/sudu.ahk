@@ -55,7 +55,7 @@ Gui, Add, Button, x32 y29 w120 h70 gRunEverything, Add tasks and start them
 Gui, Add, Button, x32 y109 w120 h70 gDeleteTasks, Delete Tasks
 Gui, Add, Button, x162 y69 w120 h70 gRunTasks, (Re)start tasks
 Gui, Show, , ChooseMode
-Return
+return
 
 GuiClose:
 ExitApp
