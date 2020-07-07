@@ -12,11 +12,11 @@ SetMouseDelay -1
 SetBatchLines -1
 
 FileCreateDir, data
-FileInstall, C:\Users\Kipras\Documents\AHK Scripts\Sudu Tasks\Images\start.png, data\start.png
-FileInstall, C:\Users\Kipras\Documents\AHK Scripts\Sudu Tasks\Images\tasks.png, data\tasks.png
-FileInstall, C:\Users\Kipras\Documents\AHK Scripts\Sudu Tasks\Images\continue.png, data\continue.png
-FileInstall, C:\Users\Kipras\Documents\AHK Scripts\Sudu Tasks\Images\email_box.png, data\email_box.png
-FileInstall, C:\Users\Kipras\Documents\AHK Scripts\Sudu Tasks\Images\sudu.png, data\sudu.png
+FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\start.png, data\start.png
+FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\tasks.png, data\tasks.png
+FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\continue.png, data\continue.png
+FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\email_box.png, data\email_box.png
+FileInstall, C:\Users\Kipras\Documents\AHK\Sudu\Images\sudu.png, data\sudu.png
 
 Hotkey !^a, AddTasks
 Hotkey !^r, StartTasks
@@ -287,12 +287,6 @@ StartTasks:
                     ContinueClicks += 1
                     Found := True
                     Sleep 1000
-                } else if ErrorLevel = 1
-                {
-                    MsgBox cannot find continue image
-                } else if ErrorLevel = 2
-                {
-                    MsgBox error getting continue image resource
                 }
             }
         }
