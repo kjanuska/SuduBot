@@ -51,10 +51,12 @@ ST_Insert(insert,input,pos=1)
     return, output
 }
 
-Gui, Add, Button, x32 y29 w120 h70 gRunEverything, Add tasks and start them
-Gui, Add, Button, x32 y109 w120 h70 gDeleteTasks, Delete Tasks
-Gui, Add, Button, x162 y69 w120 h70 gRunTasks, (Re)start tasks
-Gui, Show, , ChooseMode
+MainGui:
+    Gui, Add, Button, x10 y30 w120 h70 gRunEverything, Add tasks and start them
+    Gui, Add, Button, x140 y30 w120 h70 gDeleteTasks, Delete Tasks
+    Gui, Add, Button, x270 y30 w120 h70 gRunTasks, (Re)start tasks
+    Gui, Add, Button, x170 y110 w60 h30 gExitScript, Exit App
+    Gui, Show, , ChooseMode
 return
 
 GuiClose:
@@ -342,9 +344,13 @@ return
     }
     
     MsgBox Done
-ExitApp
+    reload
 return
 
 Escape::
+    reload
+return
+
+ExitScript:
 ExitApp
 return
