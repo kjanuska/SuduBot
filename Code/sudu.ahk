@@ -52,9 +52,10 @@ ST_Insert(insert,input,pos=1)
 }
 
 MainGui:
+    Gui, Add, Text, x35 , Press ESC to return to this menu, close out of any dialogue to quit app.
     Gui, Add, Button, x10 y30 w120 h70 gRunEverything, Add tasks and start them
     Gui, Add, Button, x140 y30 w120 h70 gDeleteTasks, Delete Tasks
-    Gui, Add, Button, x270 y30 w120 h70 gRunTasks, (Re)start tasks
+    Gui, Add, Button, x270 y30 w120 h70 gRestartTasks, (Re)start tasks
     Gui, Add, Button, x170 y110 w60 h30 gExitScript, Exit App
     Gui, Show, , ChooseMode
 return
@@ -126,7 +127,7 @@ GenerateEmails:
     ; Ask user for number of tasks and times
     ; ==============================================================================
 TaskRequest:
-    Gui, Add, Text, , You have %TotalEmails% available tasks. How many do you want?
+    Gui, Add, Text, , You have %TotalEmails% available tasks.`nHow many do you want?
     Gui, Add, Edit
     Gui, Add, UpDown, vTaskAmount Range1-%TotalEmails%, 1
     Gui, Add, Text, , How many different checkout times?
@@ -262,10 +263,10 @@ AddTasks:
     ; ==============================================================================
     ; Start tasks and click continue
     ; ==============================================================================
-RunTasks:
+StartTasks:
+    Gui, Destroy
     Sleep 100
     ContinueClicks := 0
-StartTasks:
     Loop
     {
         Found := False
@@ -345,6 +346,14 @@ return
     
     MsgBox Done
     reload
+return
+
+RestartTasks:
+    Gui, Destroy
+    
+    Gui, Add, Text, , Open Sudu tasks screen and press ctrl + alt + r to restart tasks
+    Gui, Show, , TaskRestart
+    WinSet, AlwaysOnTop, On, TaskRestart
 return
 
 Escape::
